@@ -1,65 +1,79 @@
-AWS Server Provisioning with Terraform & Ansible
-This repository demonstrates the process of provisioning and managing an AWS EC2 instance using Terraform and Ansible, alongside setting up a Nginx web server. It is designed to automate the deployment of infrastructure and application using Infrastructure as Code (IaC) principles.
+**AWS Server Provisioning with Terraform & Ansible**
+This repository demonstrates the process of provisioning and managing an AWS EC2 instance using Terraform and Ansible, alongside setting up a Nginx web server. We have also automated the deployment of Infrastructure as Code (IaC) principles.
 
-Project Overvie
+**Project Overview**
 This project involves:
 
-AWS EC2 Provisioning: Using Terraform to create and manage an EC2 instance.
-Configuration Management: Using Ansible to automate the setup of an Nginx web server on the EC2 instance.
-Key Pair Management: Handling SSH key pairs for secure access to the EC2 instance.
-Web Server Setup: Configuring Nginx to serve a basic static web page.
-Terraform Automation: Automating the deployment and provisioning of resources on AWS.
-Prerequisites
-Before getting started, make sure you have the following installed:
+**AWS EC2 Provisioning**: Using Terraform to create and manage an EC2 instance.
+**Configuration Management**: Using Ansible to automate the setup of an Nginx web server on the EC2 instance.
+**Key Pair Management:** Handling SSH key pairs for secure access to the EC2 instance.
+**Web Server Setup:** Configuring Nginx to serve a basic static web page.
+**Terraform Automation:** Automating the deployment and provisioning of resources on AWS.
 
-Terraform: For provisioning AWS resources.
-Ansible: For configuration management of the EC2 instance.
-AWS CLI: For interacting with AWS.
-SSH Key Pair: For accessing your EC2 instance securely.
-Files in this Repo
-terraform.tf: Contains Terraform configurations for creating and managing an EC2 instance on AWS.
-nginx-setup.yml: Ansible playbook to install and configure Nginx on the EC2 instance.
-inventory.ini: An Ansible inventory file, specifying the target EC2 instance.
-hosts.ini: Stores host-specific information like IP addresses for use with Ansible.
-Steps to Deploy
-Step 1: Provision EC2 Instance with Terraform
-Clone the repository and navigate to the Terraform directory:
 
+**Prerequisites**
+Prior to starting this project, you want to make sure the following is installed on your local machine:
+
+**Terraform**: An open-souce tool that automates the deployment management for provisioning AWS resources.
+**Ansible**: For configuration management of the AWS EC2 instance.
+**AWS CLI**: For interacting with AWS EC2 Instance
+**SSH Key Pair**: For accessing your EC2 instance securely from whichever IDE or Terminal
+
+
+**Files in this Repo**
+
+**terraform.tf**: Contains Terraform configurations for creating and managing an EC2 instance on AWS.
+**nginx-setup.yml**: Ansible playbook to install and configure Nginx on the EC2 instance.
+**inventory.ini: ** An Ansible inventory file, specifying the target EC2 instance.
+**hosts.ini: **Stores host-specific information like IP addresses for use with Ansible.
+**README.md** - Project documentation.
+**main.tf** - Terraform configuration to define and provision AWS Instance.
+**playbook.yml** - Ansible playbook for running commands on the EC2 instance.
+
+Setup Instructions
+1. Configure AWS CLI:
+- Before running any commands, ensure you have AWS CLI configured on your machine with the correct credentials. You can configure AWS CLI using the following command:
+
+```bash
+aws configure
+```
+- This will prompt you for your AWS Access Key ID, Secret Access Key, and the region you want to work in.
+
+
+2. Terraform:
+- Install Terraform on your local machine.
+- In main.tf, ensure you have the correct AWS region and credentials set up for your environment.
+To initialize the Terraform working directory:
+
+```
 bash
-Copy code
-git clone https://github.com/your-username/aws-server-provisioning.git
-cd aws-server-provisioning/terraform
-Initialize Terraform:
-
-bash
-Copy code
 terraform init
-Apply the Terraform configuration to provision an EC2 instance:
+```
 
-b
-Copy code
+- To apply the Terraform configuration and create the EC2 instance:
+
+```
+bash
 terraform apply
-Terraform will prompt for confirmation. Type yes to proceed.
-Note the Public IP of your EC2 instance (you’ll need it for Ansible).
+```
 
-Step 2: Configure the EC2 Instance with Ansible
-Ensure you have the SSH Key Pair for the EC2 instance available on your local machine.
+- After running terraform apply, Terraform will provision the EC2 instance on AWS.
 
-Navigate to the Ansible directory:
+3. Ansible:
+- Install Ansible on your local machine.
+- Modify the hosts.ini and inventory.ini files to include the IP address of your EC2 instance.
+- Make sure your EC2 instance's security group allows SSH access (port 22).
+- Use the Ansible playbooks (nginx-setup.yml and playbook.yml) to configure the EC2 instance.
 
+4. Running the Playbooks:
+-To run the playbook and set up Nginx on your EC2 instance, use the following Ansible command:
+
+```
 bash
-Copy code
-cd aws-server-provisioning/ansible
-Run the Ansible playbook to configure Nginx on the EC2 instance:
+ansible-playbook -i hosts.ini nginx-setup.yml
+```
 
-bash
-Copy code
-ansible-playbook -i inventory.ini nginx-setup.yml
-Ansible will use the IP address in inventory.ini to connect to the EC2 instance and run the playbook to install Nginx.
-Key Features
-Automated EC2 Provisioning: Using Terraform to create and manage the EC2 instance, ensuring consistency and repeatability.
-Nginx Configuration: With Ansible, the EC2 instance is configured to run Nginx and serve a default static web page.
-Secure Access: Uses an SSH key pair for secure connection to the EC2 instance.
-Notes
-Sensitive Information: Any sensitive information, such as AWS access keys, should be stored securely (e.g., using environment variables or encrypted secrets managers) and should not be included directly in the repository.
-Private Repository: This repository is private for now. Once complete, consider making it public for others to use.
+The playbooks will automate the process of configuring your EC2 instance with the desired configurations.
+
+
+This project utilizes terraform and ansible to provision an AWS EC2 Instance. We have also used ansible to install NGINX on the instance that the user could access by its public IP Address. With the help of ansible and terraform, we reduce the manual effort to configure the server, proving to be efficient and effective.
