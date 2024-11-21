@@ -1,7 +1,7 @@
 AWS Server Provisioning with Terraform & Ansible
 This repository demonstrates the process of provisioning and managing an AWS EC2 instance using Terraform and Ansible, alongside setting up a Nginx web server. It is designed to automate the deployment of infrastructure and application using Infrastructure as Code (IaC) principles.
 
-Project Overview
+Project Overvie
 This project involves:
 
 AWS EC2 Provisioning: Using Terraform to create and manage an EC2 instance.
