@@ -1,0 +1,22 @@
+---
+- name: Install packages and configure the containers
+  hosts: aws_ec2
+  become: true
+  tasks:
+    - name: Update all the packages
+      ansible.builtin.dnf: 
+        name: "*"
+        state: latest
+
+    - name: Install Nginx 
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+

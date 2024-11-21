@@ -1,0 +1,27 @@
+---
+- name: Install and configure nginx
+  hosts: all
+  become: true
+  tasks:
+    - name: Install NGINX
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start and enable NGINX Service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy custom index.html
+      ansible.builtin.copy:
+        content: "Showcasing my Ansible Skills :) within NGINX Server :)"
+
+    - name: Open port 80 within the firewall
+      ufw:
+        rule: allow
+        name: 'Open http (80) port'
+        port: 80
+        proto: tcp 
