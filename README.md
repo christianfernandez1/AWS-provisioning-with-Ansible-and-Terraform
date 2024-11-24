@@ -2,6 +2,7 @@
 
 This repository demonstrates the process of provisioning and managing an AWS EC2 instance using Terraform and Ansible, alongside setting up a Nginx web server. We have also automated the deployment of Infrastructure as Code (IaC) principles.
 
+
 **Project Overview**
 This project involves:
 
@@ -13,6 +14,7 @@ This project involves:
 
 
 **Prerequisites**
+
 Prior to starting this project, you want to make sure the following is installed on your local machine:
 
 **Terraform**: An open-souce tool that automates the deployment management for provisioning AWS resources.
@@ -39,6 +41,7 @@ Prior to starting this project, you want to make sure the following is installed
 **main.tf** - Terraform configuration to define and provision AWS Instance.
 
 **playbook.yml** - Ansible playbook for running commands on the EC2 instance.
+
 
 Setup Instructions
 1. Configure AWS CLI:
