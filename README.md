@@ -32,7 +32,7 @@ Prior to starting this project, you want to make sure the following is installed
 
 **inventory.ini:** An Ansible inventory file, specifying the target EC2 instance.
 
-**hosts.ini:**Stores host-specific information like IP addresses for use with Ansible.
+**hosts.ini:** Stores host-specific information like IP addresses for use with Ansible.
 
 **README.md** - Project documentation.
 
