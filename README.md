@@ -16,19 +16,28 @@ This project involves:
 Prior to starting this project, you want to make sure the following is installed on your local machine:
 
 **Terraform**: An open-souce tool that automates the deployment management for provisioning AWS resources.
+
 **Ansible**: For configuration management of the AWS EC2 instance.
+
 **AWS CLI**: For interacting with AWS EC2 Instance
+
 **SSH Key Pair**: For accessing your EC2 instance securely from whichever IDE or Terminal
 
 
 **Files in this Repo**
 
 **terraform.tf**: Contains Terraform configurations for creating and managing an EC2 instance on AWS.
+
 **nginx-setup.yml**: Ansible playbook to install and configure Nginx on the EC2 instance.
+
 **inventory.ini:** An Ansible inventory file, specifying the target EC2 instance.
+
 **hosts.ini:**Stores host-specific information like IP addresses for use with Ansible.
+
 **README.md** - Project documentation.
+
 **main.tf** - Terraform configuration to define and provision AWS Instance.
+
 **playbook.yml** - Ansible playbook for running commands on the EC2 instance.
 
 Setup Instructions
